@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+ul {
+  list-style: none;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+.custom-bg {
+  background-color: #ffffff;
+}
+
+.text-color {
+  color: #07143f;
+}
+
+.border-color {
+  border-color: #fab440;
+}
+
+.custom-bg-text {
+  color: #07143f;
+}
+
+.bg-color {
+  background-color: #fab440;
+}
+
+.text-color-second {
+  color: #07143f;
+}
+
+.text-color-third {
+  color: #fab440;
+}
+
+.rounded-card {
+  padding: 0.7em 0.5em 0.5em;
+  border-radius: 0.5em;
+  box-shadow: 0 5px 10px #00000033;
+}
+
+.form-card {
+  padding: 0.2em 0.2em 0.2em;
+  border-radius: 1em;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Adjust the values here */
+}
+
+.job-card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.property-card:hover {
+  transform: scale(
+    1.02
+  ); /* You can adjust the scale factor for the desired hover effect */
+}
+
+.profile-photo {
+  width: 60px;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid #eb455f; /* Add a border with white color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow */
+  border-radius: 50%; /* Ensure it stays circular */
+}
+
+.mentor-profile-photo {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid #eb455f; /* Add a border with white color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow */
+  border-radius: 50%; /* Ensure it stays circular */
+}
+
+.property-room-booking-page {
+  padding: 20px;
+}
+
+.room-details {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.room-image {
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.go-back-btn {
+  margin-top: 20px;
+}
+
+.shared-beds {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.not-found {
+  text-align: center;
+  padding: 20px;
+}
+
+.btn-book-room {
+  margin-top: 15px;
+  width: 100%;
+}

@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Ensure all elements are well spaced and sized */
+.main-container {
+  display: flex;
+  flex-direction: row; /* Default to row layout */
+}
+
+main {
+  padding: 10px;
+  flex: 1; /* Allow main content to take available space */
+}
+
+.title {
+  font-size: 3rem;
+  display: grid;
+  place-items: center;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #fab440;
+  color: #07143f;
+  height: 100vh;
+  overflow-y: auto;
+  transition: width 0.1s ease; /* Smooth transition for width changes */
+}
+
+.top_section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 10px;
+}
+
+.logo {
+  font-size: 18px;
+  line-height: 0;
+}
+
+.bars {
+  width: 30px;
+}
+
+.hide {
+  display: none;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  height: 30px;
+  padding: 10px;
+}
+
+.search input {
+  border: none;
+  margin-left: 10px;
+  border-radius: 5px;
+  background: rgb(238, 238, 238);
+  color: black; /* Ensure text color is readable */
+}
+
+.routes {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.link {
+  display: flex;
+  color: white;
+  gap: 10px;
+  padding: 5px 10px;
+  border-right: 4px solid transparent;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.link:hover {
+  border-right: 4px solid white;
+  background: #f7fcff;
+}
+
+.active {
+  border-right: 4px solid white;
+  background: #f7fcff;
+}
+
+.link_text {
+  white-space: nowrap;
+  font-size: 15px;
+}
+
+/* Sidebar Menu */
+.menu {
+  display: flex;
+  color: white;
+  padding: 5px 10px;
+  border-right: 4px solid transparent;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  justify-content: space-between;
+}
+
+.menu_item {
+  display: flex;
+  gap: 10px;
+}
+
+.menu_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu_container .link {
+  padding-left: 20px;
+  border-bottom: #fff 0.5px solid;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .top_section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .bars {
+    margin-top: 10px;
+  }
+
+  .search {
+    height: auto;
+  }
+
+  .search input {
+    width: 100%;
+  }
+
+  .routes {
+    flex-direction: column;
+  }
+
+  .link,
+  .menu {
+    padding: 10px 15px;
+  }
+
+  .link_text {
+    font-size: 14px;
+  }
+
+  .menu_container .link {
+    padding-left: 10px;
+  }
+}
