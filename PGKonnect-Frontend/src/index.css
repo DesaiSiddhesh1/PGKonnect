@@ -5,61 +5,83 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f4f8;
+  /* Subtle light grey background */
+  color: #333333;
+  /* Darker text for better readability */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+  background-color: #f8f9fa;
+  /* Light grey background for code blocks */
+  padding: 2px 4px;
+  border-radius: 4px;
 }
 
-ul {
-  list-style: none;
-}
+ul,
 li {
   list-style: none;
 }
+
 a {
   text-decoration: none;
+  color: #1a73e8;
+  /* Blue for links */
 }
 
 .custom-bg {
   background-color: #ffffff;
+  /* Pure white */
 }
 
 .text-color {
-  color: #07143f;
+  color: #1d3557;
+  /* Deep blue text */
 }
 
 .border-color {
-  border-color: #fab440;
+  border-color: #e63946;
+  /* Red border */
 }
 
 .custom-bg-text {
-  color: #07143f;
+  color: #457b9d;
+  /* Muted blue text */
 }
 
 .bg-color {
-  background-color: #fab440;
+  background-color: #a8dadc;
+  /* Soft teal background */
 }
 
 .text-color-second {
-  color: #07143f;
+  color: #457b9d;
+  /* Muted blue */
 }
 
 .text-color-third {
-  color: #fab440;
+  color: #e63946;
+  /* Bright red */
 }
 
 .rounded-card {
   padding: 0.7em 0.5em 0.5em;
   border-radius: 0.5em;
-  box-shadow: 0 5px 10px #00000033;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+  background-color: #f1faee;
+  /* Light mint background */
 }
 
 .form-card {
   padding: 0.2em 0.2em 0.2em;
   border-radius: 1em;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Adjust the values here */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  /* Reduced shadow */
+  background-color: #ffffff;
+  /* Clean white background */
 }
 
 .job-card {
@@ -67,51 +89,68 @@ a {
 }
 
 .property-card:hover {
-  transform: scale(
-    1.02
-  ); /* You can adjust the scale factor for the desired hover effect */
+  transform: scale(1.02);
+  background-color: #f0efeb;
+  /* Slightly darker grey on hover */
 }
 
 .profile-photo {
   width: 60px;
   height: auto;
   object-fit: cover;
-  border: 1px solid #eb455f; /* Add a border with white color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow */
-  border-radius: 50%; /* Ensure it stays circular */
+  border: 2px solid #1d3557;
+  /* Blue border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  /* Enhanced shadow */
+  border-radius: 50%;
 }
 
 .mentor-profile-photo {
   width: 100px;
   height: auto;
   object-fit: cover;
-  border: 1px solid #eb455f; /* Add a border with white color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow */
-  border-radius: 50%; /* Ensure it stays circular */
+  border: 2px solid #1d3557;
+  /* Blue border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
 }
 
 .property-room-booking-page {
   padding: 20px;
+  background-color: #f0f4f8;
+  /* Consistent light grey background */
 }
 
 .room-details {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
+  /* White card for room details */
   padding: 15px;
   border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Clean shadow */
 }
 
 .room-image {
   max-height: 300px;
   object-fit: cover;
   border-radius: 8px;
+  border: 2px solid #457b9d;
+  /* Muted blue border */
 }
 
 .go-back-btn {
   margin-top: 20px;
+  background-color: #e63946;
+  /* Red button */
+  color: #ffffff;
+  /* White text */
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
 .shared-beds {
-  background-color: #e9ecef;
+  background-color: #a8dadc;
+  /* Soft teal */
   padding: 10px;
   border-radius: 5px;
   margin-top: 15px;
@@ -120,9 +159,17 @@ a {
 .not-found {
   text-align: center;
   padding: 20px;
+  color: #e63946;
+  /* Bright red text for emphasis */
 }
 
 .btn-book-room {
   margin-top: 15px;
   width: 100%;
+  background-color: #457b9d;
+  /* Muted blue button */
+  color: #ffffff;
+  /* White text */
+  padding: 10px;
+  border-radius: 5px;
 }

@@ -3,30 +3,37 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* Ensure all elements are well spaced and sized */
+
+/* General Layout */
 .main-container {
   display: flex;
-  flex-direction: row; /* Default to row layout */
+  flex-direction: row;
 }
 
 main {
-  padding: 10px;
-  flex: 1; /* Allow main content to take available space */
+  padding: 20px;
+  flex: 1;
+  background-color: #f7fcff;
 }
 
 .title {
   font-size: 3rem;
   display: grid;
   place-items: center;
+  color: #07143f;
 }
 
 /* Sidebar */
 .sidebar {
-  background: #fab440;
+  background: #ffffff;
+  /* White background */
   color: #07143f;
+  /* Dark blue text for contrast */
   height: 100vh;
   overflow-y: auto;
-  transition: width 0.1s ease; /* Smooth transition for width changes */
+  transition: width 0.3s ease;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for depth */
 }
 
 .top_section {
@@ -34,75 +41,86 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 15px 10px;
+  background-color: #ffffff;
+  /* Matches sidebar */
+  border-bottom: 1px solid #e5e5e5;
+  /* Subtle divider */
 }
 
 .logo {
-  font-size: 18px;
-  line-height: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fab440;
+  /* Yellow logo text for visibility */
 }
 
 .bars {
   width: 30px;
-}
-
-.hide {
-  display: none;
+  cursor: pointer;
+  color: #07143f;
 }
 
 .search {
   display: flex;
   align-items: center;
   margin: 10px 0;
-  height: 30px;
+  height: 40px;
   padding: 10px;
+  background-color: #f8f9fa;
+  /* Light grey background for search */
+  border-radius: 5px;
 }
 
 .search input {
   border: none;
   margin-left: 10px;
   border-radius: 5px;
-  background: rgb(238, 238, 238);
-  color: black; /* Ensure text color is readable */
+  background: #ffffff;
+  /* White input background */
+  color: #333333;
+  /* Dark text */
+  width: 100%;
+  outline: none;
 }
 
 .routes {
-  margin-top: 15px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 }
 
 .link {
   display: flex;
-  color: white;
+  align-items: center;
+  color: #07143f;
+  /* Dark text for links */
   gap: 10px;
-  padding: 5px 10px;
+  padding: 10px 15px;
   border-right: 4px solid transparent;
-  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-}
-
-.link:hover {
-  border-right: 4px solid white;
-  background: #f7fcff;
+  border-radius: 5px;
 }
 
 .active {
-  border-right: 4px solid white;
-  background: #f7fcff;
+  border-right: 4px solid #fab440;
+  /* Yellow border for active link */
+  background: #f1faee;
+  /* Light background for active link */
+  color: #07143f;
+  /* Dark text for active link */
 }
 
 .link_text {
   white-space: nowrap;
-  font-size: 15px;
+  font-size: 1rem;
 }
 
 /* Sidebar Menu */
 .menu {
   display: flex;
-  color: white;
-  padding: 5px 10px;
+  color: #07143f;
+  padding: 10px 15px;
   border-right: 4px solid transparent;
-  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
   justify-content: space-between;
 }
 
@@ -117,11 +135,12 @@ main {
 }
 
 .menu_container .link {
-  padding-left: 20px;
-  border-bottom: #fff 0.5px solid;
+  padding-left: 25px;
+  border-bottom: 0.5px solid #e5e5e5;
+  /* Subtle divider between links */
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .main-container {
     flex-direction: column;
@@ -138,7 +157,7 @@ main {
   }
 
   .logo {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 
   .bars {
@@ -147,6 +166,7 @@ main {
 
   .search {
     height: auto;
+    padding: 10px;
   }
 
   .search input {
@@ -159,14 +179,14 @@ main {
 
   .link,
   .menu {
-    padding: 10px 15px;
+    padding: 10px;
   }
 
   .link_text {
-    font-size: 14px;
+    font-size: 0.9rem;
   }
 
   .menu_container .link {
-    padding-left: 10px;
+    padding-left: 15px;
   }
 }
