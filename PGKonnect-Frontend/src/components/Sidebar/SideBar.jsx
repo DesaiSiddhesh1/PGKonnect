@@ -7,7 +7,6 @@ import {
   FaUser,
   FaSignInAlt,
   FaUserPlus,
-  FaPhoneAlt,
   FaInfoCircle,
   FaCheckCircle,
   FaHourglassHalf,
@@ -22,7 +21,6 @@ import {
 import {
   MdApartment,
   MdHome,
-  MdVisibility,
   MdAddLocation,
 } from "react-icons/md";
 import { BiCog } from "react-icons/bi";
@@ -39,11 +37,6 @@ const routes = [
     path: "/about-us",
     name: "About Us",
     icon: <FaInfoCircle />,
-  },
-  {
-    path: "/contact-us",
-    name: "Contact Us",
-    icon: <FaPhoneAlt />,
   },
 ];
 
@@ -280,22 +273,7 @@ const SideBar = ({ children }) => {
 
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const inputAnimation = {
-    hidden: {
-      width: 0,
-      padding: 0,
-      transition: {
-        duration: 0.2,
-      },
-    },
-    show: {
-      width: "140px",
-      padding: "5px 15px",
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
+
 
   const showAnimation = {
     hidden: {
