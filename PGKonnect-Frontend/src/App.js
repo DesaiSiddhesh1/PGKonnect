@@ -5,9 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/ErrorPage";
 import Users from "./pages/Users";
 import AboutUsPage from "./pages/AboutUsPage";
-import Order from "./pages/Order";
-import Saved from "./pages/Saved";
-import Setting from "./pages/Setting";
+
 import UserLoginForm from "./users/UserLoginForm";
 import UserRegister from "./users/UserRegister";
 import HomePage from "./pages/HomePage";
@@ -52,9 +50,6 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/users" element={<Users />} />
           <Route path="/about-us" element={<AboutUsPage />} />
-          <Route path="/order" element={<Order />} />
-          <Route path="/saved" element={<Saved />} />
-          <Route path="/settings" element={<Setting />} />
           <Route path="/user/login" element={<UserLoginForm />} />
           <Route path="/user/guest/register" element={<UserRegister />} />
           <Route path="/user/owner/register" element={<UserRegister />} />

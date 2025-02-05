@@ -18,7 +18,7 @@ const AddLocationForm = () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        //     Authorization: "Bearer " + admin_jwtToken,
+        Authorization: "Bearer " + admin_jwtToken,
       },
       body: JSON.stringify(data),
     })

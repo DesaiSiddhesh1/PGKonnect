@@ -18,6 +18,8 @@ const UserRegister = () => {
     role: "",
   });
 
+  const [errors, setErrors] = useState({});
+
   useEffect(() => {
     if (document.URL.indexOf("guest") != -1) {
       user.role = "Guest";
@@ -30,9 +32,29 @@ const UserRegister = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  const validateForm = () => {
+    let formErrors = {};
+    if (!user.firstName.trim()) formErrors.firstName = "First name is required";
+    if (!user.lastName.trim()) formErrors.lastName = "Last name is required";
+    if (!user.emailId.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/))
+      formErrors.emailId = "Enter a valid email";
+    if (user.password.length < 6)
+      formErrors.password = "Password must be at least 6 characters";
+    if (!user.phoneNo.match(/^\d{10}$/))
+      formErrors.phoneNo = "Phone number must be 10 digits";
+    if (!user.street.trim()) formErrors.street = "Street is required";
+    if (!user.city.trim()) formErrors.city = "City is required";
+    if (!user.pincode.match(/^\d{6}$/))
+      formErrors.pincode = "Pincode must be 6 digits";
+
+    setErrors(formErrors);
+    return Object.keys(formErrors).length === 0;
+  };
+
+
   const saveUser = (e) => {
     e.preventDefault();
-
+    if (!validateForm()) return;
     let jwtToken;
 
     fetch("http://localhost:8080/api/user/register", {
@@ -129,8 +151,8 @@ const UserRegister = () => {
                 {document.URL.indexOf("guest") != -1
                   ? "Guest"
                   : document.URL.indexOf("owner") != -1
-                  ? "Owner"
-                  : "Here!!!"}
+                    ? "Owner"
+                    : "Here!!!"}
               </h5>
             </div>
             <div className="card-body mt-3">
@@ -147,6 +169,7 @@ const UserRegister = () => {
                     onChange={handleUserInput}
                     value={user.firstName}
                   />
+                  {errors.firstName && <span className="text-danger">{errors.firstName}</span>}
                 </div>
 
                 <div className="col-md-6 mb-3 text-color">
@@ -161,6 +184,7 @@ const UserRegister = () => {
                     onChange={handleUserInput}
                     value={user.lastName}
                   />
+                  {errors.lastName && <span className="text-danger">{errors.lastName}</span>}
                 </div>
 
                 <div className="col-md-6 mb-3 text-color">
@@ -175,6 +199,7 @@ const UserRegister = () => {
                     onChange={handleUserInput}
                     value={user.emailId}
                   />
+                  {errors.emailId && <span className="text-danger">{errors.emailId}</span>}
                 </div>
                 <div className="col-md-6 mb-3">
                   <label htmlFor="quantity" className="form-label">
@@ -188,6 +213,7 @@ const UserRegister = () => {
                     onChange={handleUserInput}
                     value={user.password}
                   />
+                  {errors.password && <span className="text-danger">{errors.password}</span>}
                 </div>
 
                 <div className="col-md-6 mb-3">
@@ -202,6 +228,7 @@ const UserRegister = () => {
                     onChange={handleUserInput}
                     value={user.phoneNo}
                   />
+                  {errors.password && <span className="text-danger">{errors.password}</span>}
                 </div>
 
                 <div className="col-md-6 mb-3">
@@ -216,6 +243,7 @@ const UserRegister = () => {
                     onChange={handleUserInput}
                     value={user.street}
                   />
+                  {errors.street && <span className="text-danger">{errors.street}</span>}
                 </div>
                 <div className="col-md-6 mb-3">
                   <label htmlFor="price" className="form-label">
@@ -229,6 +257,7 @@ const UserRegister = () => {
                     onChange={handleUserInput}
                     value={user.city}
                   />
+                  {errors.city && <span className="text-danger">{errors.city}</span>}
                 </div>
 
                 <div className="col-md-6 mb-3">
@@ -243,6 +272,7 @@ const UserRegister = () => {
                     onChange={handleUserInput}
                     value={user.pincode}
                   />
+                  {errors.pincode && <span className="text-danger">{errors.pincode}</span>}
                 </div>
 
                 <div className="d-flex aligns-items-center justify-content-center">
