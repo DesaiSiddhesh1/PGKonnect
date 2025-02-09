@@ -14,23 +14,40 @@ const AddPropertyFacilityForm = () => {
         propertyId: propertyId,
     });
 
-    const [errors, setErrors] = useState({});
-
     const handleChange = (e) => {
         setFacilityDetail({ ...facilityDetail, [e.target.name]: e.target.value });
-        setErrors({ ...errors, [e.target.name]: "" });
     };
 
     const validateForm = () => {
-        let formErrors = {};
+        let isValid = true;
+
         if (!facilityDetail.name) {
-            formErrors.name = "Facility Name is required";
+            isValid = false;
+            toast.error("Facility Name is required", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
+
         if (!facilityDetail.description) {
-            formErrors.description = "Description is required";
+            isValid = false;
+            toast.error("Description is required", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
-        setErrors(formErrors);
-        return Object.keys(formErrors).length === 0;
+
+        return isValid;
     };
 
     const handleSubmit = (e) => {
@@ -57,7 +74,6 @@ const AddPropertyFacilityForm = () => {
                             autoClose: 1000,
                         });
                         setTimeout(() => {
-                            navigate("/home");
                         }, 1000);
                     } else {
                         toast.error(res.responseMessage, {
@@ -85,24 +101,22 @@ const AddPropertyFacilityForm = () => {
                         <input type="text"
                             id="name"
                             name="name"
-                            className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                            className={`form-control`}
                             value={facilityDetail.name}
                             onChange={handleChange}
-                            required
+
                         />
-                        {errors.name && <div className="invalid-feedback">{errors.name}</div>}
                     </div>
                     <div className="mb-3">
                         <label htmlFor="description" className="form-label">Description</label>
                         <textarea
                             id="description"
                             name="description"
-                            className={`form-control ${errors.description ? 'is-invalid' : ''}`}
+                            className={`form-control`}
                             value={facilityDetail.description}
                             onChange={handleChange}
-                            required
+
                         />
-                        {errors.description && <div className="invalid-feedback">{errors.description}</div>}
                     </div>
                     <button type="submit" className="btn bg-color custom-bg-text w-100">
                         Add Facility

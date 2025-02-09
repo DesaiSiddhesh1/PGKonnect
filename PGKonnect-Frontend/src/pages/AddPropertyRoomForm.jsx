@@ -42,7 +42,6 @@ const AddPropertyRoomForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     fetch("http://localhost:8080/api/property/room/add", {
       method: "PUT",
       headers: {

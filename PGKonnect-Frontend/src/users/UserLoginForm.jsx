@@ -9,37 +9,36 @@ const UserLoginForm = () => {
   const [loginRequest, setLoginRequest] = useState({
     emailId: "",
     password: "",
+    //  role: "",
   });
-
-  const [errors, setErrors] = useState({});
 
   const handleUserInput = (e) => {
     setLoginRequest({ ...loginRequest, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" });
   };
 
-  const validateForm = () => {
-    let formErrors = {};
-    if (!loginRequest.emailId) {
-      formErrors.emailId = "Email Id is required";
-    } else if (!/\S+@\S+\.\S+/.test(loginRequest.emailId)) {
-      formErrors.emailId = "Email Id is invalid";
+  const validateInputs = () => {
+    if (!loginRequest.emailId || !loginRequest.password) {
+      toast.error("All fields are required!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return false;
     }
-    if (!loginRequest.password) {
-      formErrors.password = "Password is required";
-    }
-    setErrors(formErrors);
-    return Object.keys(formErrors).length === 0;
+    return true;
   };
 
   const loginAction = (e) => {
     e.preventDefault();
-
-    if (!validateForm()) {
+    if (!validateInputs()) {
       return;
     }
 
-    fetch("https://localhost:8080/api/user/login", { // Use HTTPS
+    fetch("http://localhost:8080/api/user/login", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -47,35 +46,58 @@ const UserLoginForm = () => {
       },
       body: JSON.stringify(loginRequest),
     })
-      .then((result) => result.json())
-      .then((res) => {
-        if (res.success) {
-          console.log("Got the success response");
+      .then((result) => {
+        console.log("result", result);
+        result.json().then((res) => {
+          if (res.success) {
+            console.log("Got the success response");
 
-          if (res.jwtToken) {
-            if (res.user.role === "Admin") {
-              sessionStorage.setItem("active-admin", JSON.stringify(res.user));
-              sessionStorage.setItem("admin-jwtToken", res.jwtToken);
-            } else if (res.user.role === "Guest") {
-              sessionStorage.setItem("active-guest", JSON.stringify(res.user));
-              sessionStorage.setItem("guest-jwtToken", res.jwtToken);
-            } else if (res.user.role === "Owner") {
-              sessionStorage.setItem("active-owner", JSON.stringify(res.user));
-              sessionStorage.setItem("owner-jwtToken", res.jwtToken);
+            if (res.jwtToken !== null) {
+              if (res.user.role === "Admin") {
+                sessionStorage.setItem(
+                  "active-admin",
+                  JSON.stringify(res.user)
+                );
+                sessionStorage.setItem("admin-jwtToken", res.jwtToken);
+              } else if (res.user.role === "Guest") {
+                sessionStorage.setItem(
+                  "active-guest",
+                  JSON.stringify(res.user)
+                );
+                sessionStorage.setItem("guest-jwtToken", res.jwtToken);
+              } else if (res.user.role === "Owner") {
+                sessionStorage.setItem(
+                  "active-owner",
+                  JSON.stringify(res.user)
+                );
+                sessionStorage.setItem("owner-jwtToken", res.jwtToken);
+              }
             }
 
-            toast.success(res.responseMessage, {
-              position: "top-center",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
-            setTimeout(() => {
-              navigate("/home"); // Use navigate
-            }, 1000);
+            if (res.jwtToken !== null) {
+              toast.success(res.responseMessage, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
+              setTimeout(() => {
+                window.location.href = "/home";
+              }, 1000); // Redirect after 3 seconds
+            } else {
+              toast.error(res.responseMessage, {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
+            }
           } else {
             toast.error(res.responseMessage, {
               position: "top-center",
@@ -87,17 +109,7 @@ const UserLoginForm = () => {
               progress: undefined,
             });
           }
-        } else {
-          toast.error(res.responseMessage, {
-            position: "top-center",
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -130,33 +142,31 @@ const UserLoginForm = () => {
             <div className="card-body mt-3">
               <form>
                 <div className="mb-3 text-color">
-                  <label htmlFor="emailId" className="form-label">
+                  <label for="emailId" class="form-label">
                     <b>Email Id</b>
                   </label>
                   <input
                     type="email"
-                    className={`form-control ${errors.emailId ? 'is-invalid' : ''}`}
+                    className="form-control"
                     id="emailId"
                     name="emailId"
                     onChange={handleUserInput}
                     value={loginRequest.emailId}
                   />
-                  {errors.emailId && <div className="invalid-feedback">{errors.emailId}</div>}
                 </div>
                 <div className="mb-3 text-color">
-                  <label htmlFor="password" className="form-label">
+                  <label for="password" className="form-label">
                     <b>Password</b>
                   </label>
                   <input
                     type="password"
-                    className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                    className="form-control"
                     id="password"
                     name="password"
                     onChange={handleUserInput}
                     value={loginRequest.password}
                     autoComplete="on"
                   />
-                  {errors.password && <div className="invalid-feedback">{errors.password}</div>}
                 </div>
                 <div className="d-flex aligns-items-center justify-content-center mb-2">
                   <button
@@ -166,6 +176,9 @@ const UserLoginForm = () => {
                   >
                     Login
                   </button>
+                  <p>
+                    <a href="/forgot-password">Forgot Password?</a>
+                  </p>
                   <ToastContainer />
                 </div>
               </form>

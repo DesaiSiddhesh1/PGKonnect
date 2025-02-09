@@ -26,7 +26,7 @@ import ViewOwnerRejectedProperty from "./pages/ViewOwnerRejectedProperty";
 import ViewOwnerPendingPropertyBookings from "./pages/ViewOwnerPendingPropertyBookings";
 import ViewOwnerApprovedPropertyBookings from "./pages/ViewOwnerApprovedPropertyBookings";
 import ViewOwnerRejectedPropertyBookings from "./pages/ViewOwnerRejectedPropertyBookings";
-
+import ForgotPassword from "./users/ForgotPassword";
 import ViewAdminPendingPropertyBookings from "./pages/ViewAdminPendingPropertyBookings";
 import ViewAdminApprovedPropertyBookings from "./pages/ViewAdminApprovedPropertyBookings";
 import ViewAdminRejectedPropertyBookings from "./pages/ViewAdminRejectedPropertyBookings";
@@ -49,6 +49,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/user/login" element={<UserLoginForm />} />
           <Route path="/user/guest/register" element={<UserRegister />} />

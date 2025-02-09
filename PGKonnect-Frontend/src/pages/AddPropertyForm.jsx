@@ -42,10 +42,9 @@ const AddPropertyForm = () => {
     setPropertyRequest({ ...propertyRequest, [e.target.name]: e.target.value });
   };
 
-  const saveProperty = (e) => {
-    e.preventDefault();
-    if (propertyRequest === null) {
-      toast.error("invalid input!!!", {
+  const validateInputs = () => {
+    if (!propertyRequest.name || !propertyRequest.description || !propertyRequest.address || !propertyRequest.locationId) {
+      toast.error("All fields are required!", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -54,7 +53,28 @@ const AddPropertyForm = () => {
         draggable: true,
         progress: undefined,
       });
+      return false;
+    }
 
+    if (!selectedImage) {
+      toast.error("Please select an image!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return false;
+    }
+
+    return true;
+  };
+
+  const saveProperty = (e) => {
+    e.preventDefault();
+    if (!validateInputs()) {
       return;
     }
 
@@ -70,11 +90,11 @@ const AddPropertyForm = () => {
       .post(
         "http://localhost:8080/api/property/add",
         formData
-        // , {
-        //   headers: {
-        //     Authorization: "Bearer " + employer_jwtToken, // Replace with your actual JWT token
-        //   },
-        // }
+        , {
+          headers: {
+            Authorization: "Bearer " + owner_jwtToken, // Replace with your actual JWT token
+          },
+        }
       )
       .then((resp) => {
         let response = resp.data;

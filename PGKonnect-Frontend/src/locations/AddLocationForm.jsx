@@ -10,7 +10,28 @@ const AddLocationForm = () => {
 
   let navigate = useNavigate();
 
+  const validateInputs = () => {
+    if (!name || !description) {
+      toast.error("All fields are required!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return false;
+    }
+    return true;
+  };
+
   const saveLocation = (e) => {
+    e.preventDefault();
+    if (!validateInputs()) {
+      return;
+    }
+
     let data = { name, description };
 
     fetch("http://localhost:8080/api/location/add", {
@@ -82,7 +103,6 @@ const AddLocationForm = () => {
           window.location.reload(true);
         }, 1000); // Redirect after 3 seconds
       });
-    e.preventDefault();
   };
 
   return (
