@@ -13,13 +13,18 @@ const ForgotPassword = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email }),
         })
-            .then((res) => res.json())
-            .then((data) => {
-                toast.success(data.message);
-                setStep(2);
+            .then(async (res) => {
+                const data = await res.json();
+                if (res.ok) {
+                    toast.success(data.message);
+                    setStep(2); // ✅ move only if OTP sent
+                } else {
+                    toast.error(data.message || "Failed to send OTP");
+                }
             })
-            .catch(() => toast.error("Failed to send OTP"));
+            .catch(() => toast.error("Server error. Please try again."));
     };
+
 
     const resetPassword = () => {
         fetch("http://localhost:8080/api/user/reset-password", {

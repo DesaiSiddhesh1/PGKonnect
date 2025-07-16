@@ -16,6 +16,7 @@ import PropertyRoomBookingPage from "./pages/PropertyRoomBookingPage";
 import UserLogout from "./pages/UserLogout";
 import UserProfilePage from "./users/UserProfilePage";
 import MyWallet from "./users/MyWallet";
+import ResetPassword from "./users/ResetPassword";
 import AddPropertyForm from "./pages/AddPropertyForm";
 import ViewPendingProperty from "./pages/ViewPendingProperty";
 import ViewRejectedProperty from "./pages/ViewRejectedProperty";
@@ -26,7 +27,7 @@ import ViewOwnerRejectedProperty from "./pages/ViewOwnerRejectedProperty";
 import ViewOwnerPendingPropertyBookings from "./pages/ViewOwnerPendingPropertyBookings";
 import ViewOwnerApprovedPropertyBookings from "./pages/ViewOwnerApprovedPropertyBookings";
 import ViewOwnerRejectedPropertyBookings from "./pages/ViewOwnerRejectedPropertyBookings";
-import ForgotPassword from "./users/ForgotPassword";
+import ForgotPasswordLink from "./users/ForgotPasswordLink";
 import ViewAdminPendingPropertyBookings from "./pages/ViewAdminPendingPropertyBookings";
 import ViewAdminApprovedPropertyBookings from "./pages/ViewAdminApprovedPropertyBookings";
 import ViewAdminRejectedPropertyBookings from "./pages/ViewAdminRejectedPropertyBookings";
@@ -49,7 +50,9 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
+          {/*<Route path="/forgot-password" element={<ForgotPassword />} />*/}
+          <Route path="/forgot-password" element={<ForgotPasswordLink />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/user/login" element={<UserLoginForm />} />
           <Route path="/user/guest/register" element={<UserRegister />} />

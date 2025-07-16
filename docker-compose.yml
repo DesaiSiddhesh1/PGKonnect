@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./PGKonnect Backend/pg-management-backend-master
+    ports:
+      - "8090:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://pgkonnect.ctacu6ckgz9c.ap-south-1.rds.amazonaws.com:3306/pgkonnect
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: 21062000Sad
+
+  frontend:
+    build: ./PGKonnect-Frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
